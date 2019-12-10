@@ -1,0 +1,20 @@
+ 
+ <textarea  [(ngModel)]="txt" placeholder="paragraph"></textarea>
+   <button (click)="addText()">Add element</button>
+
+  <mat-table #table [dataSource]="datasourcetxt">
+  
+    <ng-container matColumnDef="paragraph">
+       <th mat-header-cell *matHeaderCellDef> Text </th>
+       <mat-cell *matCellDef="let addTxt"> {{addTxt.paragraph}}
+        </mat-cell>
+          
+     
+      </ng-container>
+      
+    
+  
+      <mat-header-row *matHeaderRowDef="dysplayColumsText"></mat-header-row>
+     <mat-row *matRowDef="let row; columns: dysplayColumsText;"></mat-row>
+  </mat-table> 
+  <button (click)=" addTitle()">Add element</button>
