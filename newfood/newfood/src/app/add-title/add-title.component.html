@@ -1,0 +1,57 @@
+
+
+
+
+
+
+
+<div class="row">
+  <div class="col-md-6 mx-auto">
+  <div class="card">
+  <div class="card-header">
+  <h1 class="mb-0">Reciept</h1>
+  <div class="card-body">
+    <form class="form">
+      <div class="form-group">
+        <label for="title" >Title</label>
+        <input name="title" type="text"  required  #title="ngModel"
+         [class.is-invalid]="title.invalid && title.touched"
+       class="form-control"  [(ngModel)]=header.title>
+      <small class="text-danger" [class.d-none]="title.valid || title.untouched" >Please enter title</small>
+      </div>
+     
+      <div class="form-group">
+        <label for="email" >Email</label>
+        <input name="email" type="text"  required  #name="ngModel"
+         
+       class="form-control"  [(ngModel)]=header.email [value]="email">
+      
+      </div>
+         
+   
+          
+        
+      
+        <div class="form-group">
+          <label for="" >Type</label>
+          <select class="form-control"
+
+[(ngModel)]=header.type   name="type">
+
+<option *ngFor="let tp of typees; let i=index"
+  [value]="tp.name">{{ tp.name }}</option>
+
+</select>
+          </div>
+       
+    <div><button  (click)="addTitle()" input="button" class="btn btn-primary float right">Add Title</button></div>
+    
+    </form>
+  </div>
+  
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  
