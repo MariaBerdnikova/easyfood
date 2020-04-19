@@ -39,10 +39,10 @@ return this.userInfo.value
 
   isLogged()
   {
-    return !!localStorage.getItem('token')
+    return !!localStorage.getItem('currentUser')
   }
   getTocken()
   {
-    return localStorage.getItem('token')
+    return localStorage.getItem('currentUser')
   }
 }

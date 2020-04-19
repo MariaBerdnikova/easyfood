@@ -9,6 +9,7 @@ import { AddTitleComponent } from './add-title/add-title.component';
 import { AddReceptComponent } from './add-recept/add-recept.component';
 import { ReceptDetailsComponent } from './recept-details/recept-details.component';
 import { MeatComponent } from './meat/meat.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -34,7 +35,7 @@ const routes: Routes = [
         {
           path:'addreciept',
           component:AddReceptComponent,
-         // canActivate:[AuthGuard]
+         
           },  
           {
             path:'login',
@@ -43,7 +44,8 @@ const routes: Routes = [
                 
             {
               path:'addTitle',
-              component:AddTitleComponent
+              component:AddTitleComponent,
+              canActivate:[AuthGuard]
               }  ,
              
                 {
