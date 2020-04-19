@@ -45,10 +45,7 @@ const routes: Routes = [
               path:'addTitle',
               component:AddTitleComponent
               }  ,
-              {
-                path:'addTitle',
-                component:AddTitleComponent
-                } ,
+             
                 {
                   path:'sngl/:id',
                   component:ReceptDetailsComponent
