@@ -52,7 +52,7 @@ titleData={}
    id:"",
     title: "",
    email: this.loggedUser.email,
-   type:" "
+   type:"Soup"
 
   };//end header
 
