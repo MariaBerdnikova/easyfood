@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 export class Users{
@@ -17,7 +18,7 @@ export class Users{
 export class LoginService {
   private reurl="http://localhost:3000/api/login"
   private userInfo:BehaviorSubject<Users>
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private router: Router) {
    
    this.userInfo= new BehaviorSubject<Users>(JSON.parse(localStorage.getItem('currentUser')));
   }
@@ -44,5 +45,12 @@ return this.userInfo.value
   getTocken()
   {
     return localStorage.getItem('currentUser')
+  }
+
+  logout()
+  {
+    localStorage.removeItem('currentUser');
+    this.router.navigate(["/login"])
+
   }
 }
