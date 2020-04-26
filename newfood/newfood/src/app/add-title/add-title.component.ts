@@ -4,6 +4,8 @@ import { AddtitleService ,header} from '../addtitle.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import { AddingradientService,addIngradient,recID,RText } from '../addingradient.service';
+
 @Component({
   selector: 'app-add-title',
   templateUrl: './add-title.component.html',
@@ -18,6 +20,8 @@ export class AddTitleComponent implements OnInit {
   {id:'3', name:'Fish'}
 ];
 addReceptForm:FormGroup;
+Rec:recID
+
 type=[]
 
 title=''
@@ -25,7 +29,7 @@ email=''
 header:header
 
 titleData={}
-  constructor(private router: Router,private login:LoginService,private addTitleService:AddtitleService) { 
+  constructor(private adding:AddingradientService,private router: Router,private login:LoginService,private addTitleService:AddtitleService) { 
     this.loggedUser=this.login.getuseInfo
     this.email=this.loggedUser.email
   // this.addReceptForm=this.formbuilder.group({
@@ -52,8 +56,8 @@ titleData={}
    id:"",
     title: "",
    email: this.loggedUser.email,
-   type:"Soup"
-
+   type:"Soup",
+   
   };//end header
 
   }
@@ -61,15 +65,25 @@ titleData={}
   
   addTitle()
   {
-  this.addTitleService.addTitle(this.header)
+ // this.addTitleService.addTitle(this.header)
+ //FULL_REC.title.push(this.header)
+ FULL_REC.id=this.header.id
 
 
- .subscribe(
-         res=>{console.log(res)
+ FULL_REC.title=this.header.title;
+ FULL_REC.email=this.header.email
+ FULL_REC.type=this.header.type
+  
+ 
+ localStorage.setItem('currenTitle', JSON.stringify( FULL_REC));
+
+
+//  .subscribe(
+//          res=>{console.log(res)
           //localStorage.setItem('titleID',res.token)
-         },
-         err=>console.log(err)
-        )
+        //  },
+        //  err=>console.log(err)
+        // )
         this.router.navigate(["/addingrdients"])
   }//addTitle
  
@@ -82,7 +96,6 @@ titleData={}
   }
 
 
-
 }
 
 // export class header
@@ -93,3 +106,5 @@ titleData={}
 
 
 // }//end header
+
+const FULL_REC=new recID ('','',' ',[],[])

@@ -36,7 +36,7 @@ txt=''
 
    addReceptForm:FormGroup;
  
-sp=''
+sp='spoon'
 typspoon=[ { id:'1', name:'spoon'},          
 {id:'2', name:'small spoon'},  
 {id:'3', name:'pick'}
@@ -85,6 +85,7 @@ typspoon=[ { id:'1', name:'spoon'},
   {
 
   }
+ 
   ngOnInit() {
   
 // {
@@ -107,7 +108,24 @@ typspoon=[ { id:'1', name:'spoon'},
 
 addTitle()
   {
+    var FULL_REC=JSON.parse(localStorage.getItem("currenTitle"))
+
+  //FULL_REC.title=this.createdHeaders.title
+  //FULL_REC.email=this.createdHeaders.email
+  //FULL_REC.type=this.createdHeaders.type
   
+  /*RECEPT_HEADER.forEach(i=>{
+    FULL_REC.ingr.push (
+      {
+        "nameOfIngradient":i.nameOfIngradient,
+        "amount":i.amount,
+        "typeOfAmount":i.typeOfAmount
+      })
+    
+
+  })*/
+
+
   FULL_REC.title=this.createdHeaders.title
   FULL_REC.email=this.createdHeaders.email
   FULL_REC.type=this.createdHeaders.type
@@ -122,8 +140,7 @@ addTitle()
     
 
   })
-
-localStorage.setItem('ingr',JSON.stringify(FULL_REC))
+localStorage.setItem('currenTitle',JSON.stringify(FULL_REC))
         this.router.navigate(["/addreciept"])
       
   }//addTitle
