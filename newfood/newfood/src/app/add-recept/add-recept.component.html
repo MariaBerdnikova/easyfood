@@ -1,8 +1,21 @@
  
- <textarea  [(ngModel)]="txt" placeholder="paragraph"></textarea>
-   <button (click)="addText()">Add element</button>
+  <form class="form" #form=ngForm>
+    
+    <div class="form-group">
+ <textarea  [(ngModel)]="txt" placeholder="paragraph" name="par" #par="ngModel" required></textarea>
+ <div  *ngIf="par.errors && (par.invalid || par.touched)">
+  <small class="text-danger" *ngIf="par.errors.required" >Please enter paragraph</small>
+</div>
+ 
+ <div><button [disabled]="!form.valid" (click)="addText()">Add pharahraph</button></div>
+</div>
+  </form>
 
-  <mat-table #table [dataSource]="datasourcetxt">
+  
+  <div [ngClass]="datasourcetxt.filteredData.length > 0 ? 'vis': 'hid'">
+    <button (click)=" addTitle()">Add reciept</button>
+
+   <mat-table #table [dataSource]="datasourcetxt">
   
     <ng-container matColumnDef="paragraph">
        <th mat-header-cell *matHeaderCellDef> Text </th>
@@ -13,8 +26,8 @@
       </ng-container>
       
     
-  
+      
       <mat-header-row *matHeaderRowDef="dysplayColumsText"></mat-header-row>
      <mat-row *matRowDef="let row; columns: dysplayColumsText;"></mat-row>
   </mat-table> 
-  <button (click)=" addTitle()">Add element</button>
+</div>

@@ -29,7 +29,7 @@ export class AddReceptComponent implements OnInit {
 
    addTitle()
    {
-   var REC=JSON.parse(localStorage.getItem("ingr"))
+   var REC=JSON.parse(localStorage.getItem("currenTitle"))
    
    CONT.forEach(i=>{
     REC.content.push (
